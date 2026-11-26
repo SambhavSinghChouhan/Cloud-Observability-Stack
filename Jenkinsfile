@@ -18,6 +18,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Removing broken Jenkins APT repo if present..."
+                sudo su
                 sudo rm -f /etc/apt/sources.list.d/jenkins.list
                 sudo rm -f /etc/apt/trusted.gpg.d/jenkins.gpg
                 '''
