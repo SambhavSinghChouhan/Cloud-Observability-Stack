@@ -14,13 +14,15 @@ pipeline {
             }
         }
 
-        stage('Prepare System (Fix Jenkins Repo)') {
+        stage('Prepare System') {
             steps {
                 sh '''
-                echo "Removing broken Jenkins APT repo if present..."
-                sudo su
-                sudo rm -f /etc/apt/sources.list.d/jenkins.list
-                sudo rm -f /etc/apt/trusted.gpg.d/jenkins.gpg
+                    echo "Preparing system..."
+
+                    sudo -n rm -f /etc/apt/sources.list.d/jenkins.list
+                    sudo -n rm -f /etc/apt/trusted.gpg.d/jenkins.gpg
+
+                    sudo -n apt-get update -y
                 '''
             }
         }
