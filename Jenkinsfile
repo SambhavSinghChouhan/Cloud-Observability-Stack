@@ -14,18 +14,6 @@ pipeline {
             }
         }
 
-        stage('Prepare System') {
-            steps {
-                sh '''
-                    echo "Preparing system..."
-
-                    sudo -n rm -f /etc/apt/sources.list.d/jenkins.list
-                    sudo -n rm -f /etc/apt/trusted.gpg.d/jenkins.gpg
-
-                    sudo -n apt-get update -y
-                '''
-            }
-        }
 
         stage('Install Docker') {
             steps {
